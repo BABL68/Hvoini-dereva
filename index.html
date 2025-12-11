@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Хвойні дерева Вінниччини</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#e9f5e6, #d4ecd1, #bfdcbf);
+    color: #1e3d1f;
+}
+
+header {
+    background: #2e6b2f;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+}
+
+footer {
+    background: #2e6b2f;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin-top: 40px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #ffffffcc;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Кнопки + логотип між ними */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.nav-logo {
+    height: 55px;
+}
+
+/* Кнопки */
+button {
+    background: #2e6b2f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #3c8f3e;
+}
+
+h2 {
+    color: #225225;
+    margin-top: 0;
+}
+
+/* Картинки */
+.image-block {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-block img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ОПИС ЗРОБЛЕНО БІЛЬШИМ І ПОМІТНИМ */
+#text {
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #1a3a1a;
+    text-shadow: 1px 1px 2px #d9eed7;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="Логотип.png" alt="logo" style="height:60px; position:absolute; top:10px; left:10px;">
+    Хвойні дерева Вінниччини
+</header>
+
+<div class="container">
+
+    <!-- НАВІГАЦІЯ З ЛОГОТИПОМ ПО ЦЕНТРУ -->
+    <div class="navigation">
+        <button onclick="prevPage()">◀ Назад</button>
+
+        <img class="nav-logo" src="Логотип.png" alt="center-logo"; style="height:100px;">
+
+        <button onclick="nextPage()">Вперед ▶</button>
+    </div>
+
+    <h2 id="title"></h2>
+
+    <div class="image-block">
+        <img id="image" src="" alt="tree" />
+    </div>
+
+    <p id="text"></p>
+
+</div>
+
+<script>
+const pages = [
+    { title: "Ялинка", image: "Ялинка.png", text: "Ялинка — класичне хвойне дерево з густою конічною кроною. Має м’які зелені хвоїнки та часто використовується в озелененні й як символ зимових свят." },
+    { title: "Туя", image: "Туя.png", text: "Туя — декоративне хвойне дерево або кущ, популярне у садах Вінниччини. Має лускоподібні хвоїнки та приємний аромат, стійка до морозів." },
+    { title: "Молода ялинка", image: "Молода ялинка.png", text: "Молода ялинка має світліші та м’якші хвоїнки, швидко росте і формує правильну пірамідальну крону на ранніх етапах розвитку." },
+    { title: "Сосна", image: "Сосна.png", text: "Сосна — одне з найпоширеніших дерев регіону. Має довгі хвоїнки та високу стійкість до посухи. Формує легкі, світлі ліси." },
+    { title: "Молода сосна", image: "Молода сосна.png", text: "Молода сосна вирізняється яскраво-зеленими ніжними голками та інтенсивним ростом. Часто використовується в лісовідновленні." },
+    { title: "Кедр", image: "Кедр.png", text: "Кедр — величне хвойне дерево з м’якою ароматною хвоєю. У регіоні зустрічається переважно в декоративних насадженнях." },
+    { title: "Ялиця", image: "Ялиця.png", text: "Ялиця — хвойне дерево з плоскими, м’якими хвоїнками та приємним ароматом. Добре почувається у вологіших частинах Вінниччини." },
+    { title: "Сосна болотна", image: "Сосна болотна.png", text: "Сосна болотна росте на вологих ґрунтах та болотистих місцях. Відрізняється темною корою та щільними хвоїнками." },
+    { title: "Шишка хвойного дерева", image: "Шишка хвойного дерева.png", text: "Шишки слугують органами розмноження хвойних дерев. Мають різні форми та розміри залежно від виду дерева." },
+    { title: "Гілка хвойного дерева тис", image: "Гілка хвойного дерева тис.png", text: "Тис — рідкісне хвойне дерево з м’якою темно-зеленою хвоєю. Його деревина дуже цінна, а гілки мають характерний вигляд." },
+    { title: "GIF-анімація", image: "gif.gif", text: "GIF-анімація із зображенням святкової ялинки. На верхівці ялинки розташована яскрава зірка, яка додає святкового настрою. Анімація створює відчуття тепла, затишку та зимової атмосфери." }
+];
+
+let page = 0;
+
+function updatePage() {
+    document.getElementById("title").innerText = pages[page].title;
+    document.getElementById("image").src = pages[page].image;
+    document.getElementById("text").innerText = pages[page].text;
+}
+
+function nextPage() {
+    page = (page + 1) % pages.length;
+    updatePage();
+}
+
+function prevPage() {
+    page = (page - 1 + pages.length) % pages.length;
+    updatePage();
+}
+
+updatePage();
+</script>
+
+</body>
+</html>
