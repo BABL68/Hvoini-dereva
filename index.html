@@ -23,6 +23,98 @@ header {
     position: relative;
 }
 
+header img {
+    height: 60px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background: #3c8f3e;
+    padding: 12px;
+}
+
+nav button {
+    background: #2e6b2f;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #256026;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: #ffffffcc;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+h2 {
+    color: #225225;
+    margin-top: 0;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Галерея */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.figure {
+    text-align: center;
+}
+
+.figure img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.figcaption {
+    margin-top: 6px;
+    font-size: 16px;
+    font-style: italic;
+}
+
+/* Анімація */
+.animation {
+    text-align: center;
+}
+
+.animation img {
+    max-width: 420px;
+    margin: 20px 0;
+}
+
+/* Приховування секцій */
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
 footer {
     background: #2e6b2f;
     color: white;
@@ -32,134 +124,116 @@ footer {
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
-
-.container {
-    max-width: 900px;
-    margin: 30px auto;
-    background: #ffffffcc;
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/* Кнопки + логотип між ними */
-.navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.nav-logo {
-    height: 55px;
-}
-
-/* Кнопки */
-button {
-    background: #2e6b2f;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #3c8f3e;
-}
-
-h2 {
-    color: #225225;
-    margin-top: 0;
-}
-
-/* Картинки */
-.image-block {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.image-block img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-/* ОПИС ЗРОБЛЕНО БІЛЬШИМ І ПОМІТНИМ */
-#text {
-    font-size: 22px;
-    line-height: 1.5;
-    font-weight: bold;
-    color: #1a3a1a;
-    text-shadow: 1px 1px 2px #d9eed7;
-}
 </style>
 </head>
 
 <body>
 
 <header>
-    <img src="Логотип.png" alt="logo" style="height:60px; position:absolute; top:10px; left:10px;">
+    <img src="Логотип.png" alt="logo">
     Хвойні дерева Вінниччини
 </header>
 
+<nav>
+    <button onclick="showSection('home')">Головна</button>
+    <button onclick="showSection('gallery')">Галерея</button>
+    <button onclick="showSection('animation')">Анімація</button>
+    <button onclick="showSection('extra')">Додатково</button>
+</nav>
+
 <div class="container">
 
-    <!-- НАВІГАЦІЯ З ЛОГОТИПОМ ПО ЦЕНТРУ -->
-    <div class="navigation">
-        <button onclick="prevPage()">◀ Назад</button>
+<!-- ГОЛОВНА -->
+<div id="home" class="section active">
+<h2>Загальна характеристика курсової роботи</h2>
 
-        <img class="nav-logo" src="Логотип.png" alt="center-logo"; style="height:100px;">
+<p>
+Даний вебсайт розроблено в межах курсової роботи з дисципліни «Комп’ютерна графіка»
+на тему «Хвойні дерева Вінниччини». Основною метою роботи є створення інформаційного
+та наочного вебресурсу, який поєднує текстові матеріали з авторськими графічними
+ілюстраціями хвойних дерев.
+</p>
 
-        <button onclick="nextPage()">Вперед ▶</button>
-    </div>
+<p>
+У ході виконання курсової роботи було опрацьовано принципи створення статичних
+зображень, підбір кольорової гами, формування композиції та інтеграцію графіки
+у вебсередовище. Особливу увагу приділено стилізованому зображенню хвойних порід,
+які поширені на території Вінниччини.
+</p>
 
-    <h2 id="title"></h2>
+<p>
+Розроблений сайт має навчально-пізнавальний характер і може використовуватися
+як допоміжний матеріал для вивчення рослинного світу, а також як приклад
+застосування комп’ютерної графіки у вебпроєктах.
+</p>
+</div>
 
-    <div class="image-block">
-        <img id="image" src="" alt="tree" />
-    </div>
+<!-- ГАЛЕРЕЯ -->
+<div id="gallery" class="section">
+<h2>Галерея ілюстрацій</h2>
 
-    <p id="text"></p>
+<div class="gallery">
+<div class="figure"><img src="Ялинка.png"><div class="figcaption">Рис. 4.1 — Ялинка</div></div>
+<div class="figure"><img src="Туя.png"><div class="figcaption">Рис. 4.2 — Туя</div></div>
+<div class="figure"><img src="Молода ялинка.png"><div class="figcaption">Рис. 4.3 — Молода ялинка</div></div>
+<div class="figure"><img src="Сосна.png"><div class="figcaption">Рис. 4.4 — Сосна</div></div>
+<div class="figure"><img src="Молода сосна.png"><div class="figcaption">Рис. 4.5 — Молода сосна</div></div>
+<div class="figure"><img src="Кедр.png"><div class="figcaption">Рис. 4.6 — Кедр</div></div>
+<div class="figure"><img src="Ялиця.png"><div class="figcaption">Рис. 4.7 — Ялиця</div></div>
+<div class="figure"><img src="Сосна болотна.png"><div class="figcaption">Рис. 4.8 — Сосна болотна</div></div>
+<div class="figure"><img src="Шишка хвойного дерева.png"><div class="figcaption">Рис. 4.9 — Шишка хвойного дерева</div></div>
+<div class="figure"><img src="Гілка хвойного дерева тис.png"><div class="figcaption">Рис. 4.10 — Гілка тиса</div></div>
+</div>
+</div>
+
+<!-- АНІМАЦІЯ -->
+<div id="animation" class="section">
+<h2>Анімаційний елемент</h2>
+
+<div class="animation">
+<img src="gif.gif" alt="GIF анімація">
+<p>
+GIF-анімація використовується для демонстрації динамічних можливостей графіки.
+Анімоване зображення ялинки зі святковою зіркою додає сайту візуальної привабливості,
+створює відчуття руху та підкреслює декоративний характер проєкту.
+</p>
+</div>
+</div>
+
+<!-- ДОДАТКОВО -->
+<div id="extra" class="section">
+<h2>Додаткова інформація</h2>
+
+<p>
+Хвойні дерева мають велике екологічне та господарське значення для Вінниччини.
+Вони очищають повітря, збагачують його фітонцидами та формують сприятливий
+мікроклімат у лісових і паркових зонах.
+</p>
+
+<p>
+Створені ілюстрації можуть бути використані у навчальних посібниках,
+презентаціях, інформаційних буклетах або екологічних проєктах. Робота над
+курсовою дозволила закріпити практичні навички створення графічних елементів
+і їх застосування у веброзробці.
+</p>
+
+<p>
+Проєкт демонструє можливості поєднання комп’ютерної графіки та вебтехнологій
+для створення сучасних інформаційних ресурсів навчального призначення.
+</p>
+</div>
 
 </div>
 
+<footer>
+© Курсова робота — «Хвойні дерева Вінниччини»
+</footer>
+
 <script>
-const pages = [
-    { title: "Ялинка", image: "Ялинка.png", text: "Ялинка — класичне хвойне дерево з густою конічною кроною. Має м’які зелені хвоїнки та часто використовується в озелененні й як символ зимових свят." },
-    { title: "Туя", image: "Туя.png", text: "Туя — декоративне хвойне дерево або кущ, популярне у садах Вінниччини. Має лускоподібні хвоїнки та приємний аромат, стійка до морозів." },
-    { title: "Молода ялинка", image: "Молода ялинка.png", text: "Молода ялинка має світліші та м’якші хвоїнки, швидко росте і формує правильну пірамідальну крону на ранніх етапах розвитку." },
-    { title: "Сосна", image: "Сосна.png", text: "Сосна — одне з найпоширеніших дерев регіону. Має довгі хвоїнки та високу стійкість до посухи. Формує легкі, світлі ліси." },
-    { title: "Молода сосна", image: "Молода сосна.png", text: "Молода сосна вирізняється яскраво-зеленими ніжними голками та інтенсивним ростом. Часто використовується в лісовідновленні." },
-    { title: "Кедр", image: "Кедр.png", text: "Кедр — величне хвойне дерево з м’якою ароматною хвоєю. У регіоні зустрічається переважно в декоративних насадженнях." },
-    { title: "Ялиця", image: "Ялиця.png", text: "Ялиця — хвойне дерево з плоскими, м’якими хвоїнками та приємним ароматом. Добре почувається у вологіших частинах Вінниччини." },
-    { title: "Сосна болотна", image: "Сосна болотна.png", text: "Сосна болотна росте на вологих ґрунтах та болотистих місцях. Відрізняється темною корою та щільними хвоїнками." },
-    { title: "Шишка хвойного дерева", image: "Шишка хвойного дерева.png", text: "Шишки слугують органами розмноження хвойних дерев. Мають різні форми та розміри залежно від виду дерева." },
-    { title: "Гілка хвойного дерева тис", image: "Гілка хвойного дерева тис.png", text: "Тис — рідкісне хвойне дерево з м’якою темно-зеленою хвоєю. Його деревина дуже цінна, а гілки мають характерний вигляд." },
-    { title: "GIF-анімація", image: "gif.gif", text: "GIF-анімація із зображенням святкової ялинки. На верхівці ялинки розташована яскрава зірка, яка додає святкового настрою. Анімація створює відчуття тепла, затишку та зимової атмосфери." }
-];
-
-let page = 0;
-
-function updatePage() {
-    document.getElementById("title").innerText = pages[page].title;
-    document.getElementById("image").src = pages[page].image;
-    document.getElementById("text").innerText = pages[page].text;
+function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
 }
-
-function nextPage() {
-    page = (page + 1) % pages.length;
-    updatePage();
-}
-
-function prevPage() {
-    page = (page - 1 + pages.length) % pages.length;
-    updatePage();
-}
-
-updatePage();
 </script>
 
 </body>
